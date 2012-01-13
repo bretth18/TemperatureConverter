@@ -18,8 +18,7 @@ public class ConvertActivity extends Activity {
 
 	}
 
-	// This method is called at button click because we assigned the name to the
-	// "On Click property" of the button
+
 	public void myClickHandler(View view) {
 		switch (view.getId()) {
 		case R.id.button1:
