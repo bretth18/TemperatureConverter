@@ -7,4 +7,5 @@
 	<string name="celsius">to Celsius</string>
 	<string name="fahrenheit">to Fahrenheit</string>
 	<string name="calc">Calculate</string>
+	<string name="temperature_converter_developed_by_brett_henderson_">"Temperature Converter- Developed By Brett Henderson "</string>
 </resources>

@@ -7,7 +7,7 @@
     <EditText
         android:id="@+id/editText1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:inputType="numberSigned|numberDecimal">
+        android:layout_height="wrap_content" android:inputType="numberSigned|numberDecimal" android:hint="Type Temperature Digit Here!">
 
         <requestFocus />
     </EditText>
@@ -43,6 +43,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:text="Temperature Converter- Developed By Brett Henderson " />
+        android:text="@string/temperature_converter_developed_by_brett_henderson_" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="28dp"
+        android:layout_height="wrap_content"
+        android:text="1.0"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <DigitalClock
+        android:id="@+id/digitalClock1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DigitalClock" />
 
 </LinearLayout>

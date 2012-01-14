@@ -15,8 +15,11 @@ public class ConvertActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		text = (EditText) findViewById(R.id.editText1);
+		
 
 	}
+	
+	
 
 
 	public void myClickHandler(View view) {
