@@ -17,4 +17,17 @@
         android:layout_height="wrap_content"
         android:text="How the app works: When to Celsius is selected, the app assumes you are inputing a Farenheight temperature, and vice versa" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open Source"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This project is open source. www.github.com/bretth18/TemperatureConverter" />
+
 </LinearLayout>

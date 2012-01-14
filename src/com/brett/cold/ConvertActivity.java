@@ -1,62 +1,71 @@
 package com.brett.cold;
 
-import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Toast;
+import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 
-public class ConvertActivity extends Activity {
-	private EditText text;
-
+public class ConvertActivity extends FragmentActivity {
+		
+	private Menu mMenu;
+	private InfoFragment mInfoFrag;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
-		text = (EditText) findViewById(R.id.editText1);
-		
-
+		setContentView(R.layout.layout_base);		
+		addFragment(new TempFragment(), false);
 	}
 	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.menu, menu);
+		mMenu = menu;
+	    return super.onCreateOptionsMenu(menu);
+	}
 	
-
-
-	public void myClickHandler(View view) {
-		switch (view.getId()) {
-		case R.id.button1:
-			RadioButton celsiusButton = (RadioButton) findViewById(R.id.radio0);
-			RadioButton fahrenheitButton = (RadioButton) findViewById(R.id.radio1);
-			if (text.getText().length() == 0) {
-				Toast.makeText(this, "Please enter a valid number",
-						Toast.LENGTH_LONG).show();
-				return;
-			}
-
-			float inputValue = Float.parseFloat(text.getText().toString());
-			if (celsiusButton.isChecked()) {
-				text.setText(String
-						.valueOf(convertFahrenheitToCelsius(inputValue)));
-				celsiusButton.setChecked(false);
-				fahrenheitButton.setChecked(true);
-			} else {
-				text.setText(String
-						.valueOf(convertCelsiusToFahrenheit(inputValue)));
-				fahrenheitButton.setChecked(false);
-				celsiusButton.setChecked(true);
-			}
-			break;
+	public void addFragment(Fragment frag, boolean backstack) {
+		FragmentManager mFragmentManager = getSupportFragmentManager();
+		FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
+		
+		if(backstack) {
+			mFragmentTransaction.addToBackStack(null);
 		}
-	}
-
-	// Converts to celsius
-	private float convertFahrenheitToCelsius(float fahrenheit) {
-		return ((fahrenheit - 32) * 5 / 9);
-	}
-
-	// Converts to fahrenheit
-	private float convertCelsiusToFahrenheit(float celsius) {
-		return ((celsius * 9) / 5) + 32;
 		
+		mFragmentTransaction.add(R.id.base, frag);			
+		mFragmentTransaction.commit();
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	        case android.R.id.home:
+	        	getActionBar().setDisplayHomeAsUpEnabled(false);
+	        	getActionBar().setHomeButtonEnabled(false);
+	    		FragmentManager mFragmentManager = getSupportFragmentManager();
+	    		FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
+	    		mFragmentTransaction.remove(mInfoFrag);
+	    		mFragmentTransaction.commit();
+	        	return true;
+	            
+	        case R.id.menu_info:
+	        	mInfoFrag = new InfoFragment();
+	        	addFragment(mInfoFrag, true);
+	        	return true;
+	        	
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		if(mMenu != null) {
+			(mMenu.findItem(R.id.menu_info)).setVisible(true);			
+		}
 	}
 }
