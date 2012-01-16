@@ -1,4 +1,16 @@
+TODO LIST:
+-Add in weather API
+-Add welcome message that explains app when first downloaded
+-Fix compatibility issues in Android 2.2/2.3
+-Add in app icon
+-Create paid version without any ads
+-fix AdMob plugin so it works...
+
+
+
+
 Please Read:
+
 
 TemperatureConverter is a basic Android App that converts different temperature units
 TemperatureConverter is compatible with Android 2.2+
